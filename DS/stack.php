@@ -19,32 +19,32 @@ class Stack{
 
     //check size
     public function size(){
-        echo ($this->top + 1)."\n";
+        return ($this->top + 1)."\n";
     }
 
     //push
     public function push($val){
         $this->stack[++$this->top] = $val;
-        echo $val." is added to stack \n";
-        print_r($this->stack);
+        return $val." is added to stack \n";
+//        print_r($this->stack);
     }
 
     // pop first val
     public function pop(){
         if ($this->isEpmty()){
-            echo "Stack is empty...\n";
+            throw  new  Exception("Queue is not empty\n");
         }else{
             $val = $this->stack[$this->top--];
-            echo $val." is deleted stack \n";
+            return $val." is deleted stack \n";
         }
     }
 
     // select first val
     public function topElement() {
         if($this->top < 0) {
-            echo "Stack is empty...\n";
+            throw  new  Exception("Queue is not empty\n");
         } else {
-            echo $this->stack[$this->top]."\n";
+            return $this->stack[$this->top]."\n";
         }
     }
 }
@@ -56,6 +56,7 @@ if ($stack->isEpmty()){
     echo "Stack is not empty...\n";
 };
 $stack->size();
+
 $stack->push(4);
 $stack->push(6);
 $stack->push(1);

@@ -21,63 +21,65 @@ class Queue{
 
     // size check
     public function size(){
-        echo $this->end - $this->first."\n";
+        return $this->end - $this->first."\n";
     }
 
     // add to queue
     public function enQueue($val){
         $this->queue[++$this->end] = $val;
-        echo $val." is added to Queue \n";
-        print_r($this->queue);
+        return $val." is added to Queue \n";
+//        print_r($this->queue);
     }
 
     // delete first val queue
     public function deQueue(){
             if ($this->isEmpty()){
-                throw  new  Exception("Queue is not empty\n");
+                throw  new  Exception("Queue is empty\n");
             }else{
                 $val = $this->queue[++$this->first];
-                echo $val." is deQueue \n";
+                return $val." is deQueue \n";
             }
     }
 
     // return first val
     public function front(){
         if ($this->isEmpty()){
-            echo "Queue is empty...\n";
+            throw  new  Exception("Queue is not empty\n");
         }else{
             $val = $this->queue[$this->first + 1];
-            echo $val."\n";
+            return $val."\n";
         }
     }
 
     // return end val
     public function after(){
         if ($this->isEmpty()){
-            echo "Queue is empty...\n";
+            throw  new  Exception("Queue is not empty\n");
         }else{
             $val = $this->queue[$this->end];
-            echo $val."\n";
+            return $val."\n";
         }
     }
 }
 
 $queue = new Queue;
-//if ($queue->isEmpty()){
-//    echo "Queue is empty...\n";
-//}else{
-//    echo "Queue is not empty...\n";
-//};
-//$queue->size();
-$queue->enQueue(20);
+if ($queue->isEmpty()){
+    echo "Queue is empty...\n";
+}else{
+    echo "Queue is not empty...\n";
+};
+echo $queue->size();;
+//$queue->enQueue(20);
+$queue->enQueue(40);
+$queue->enQueue(10);
 try {
-    $queue->deQueue();
-    echo "Hehehe\n";
+    echo $queue->deQueue();
+//    echo $queue->front();
+//    echo $queue->after();
+    $queue->enQueue(30);
+
 }catch (Exception $e){
     echo 'Message: ' .$e->getMessage();
 };
-//$queue->front();
-//$queue->after();
-$queue->enQueue(30);
-
+echo $queue->size();
 ?>

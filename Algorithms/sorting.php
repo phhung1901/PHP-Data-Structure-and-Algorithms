@@ -22,6 +22,7 @@
         {
             for ($j = 0; $j < count($arr) - $i - 1; $j++)
             {
+                // check and swap
                 if ($arr[$j] > $arr[$j+1])
                 {
                     $t = $arr[$j];
@@ -42,6 +43,7 @@
                 }
             }
 
+            // swap
             $t = $arr[$i];
             $arr[$i] = $arr[$min];
             $arr[$min] = $t;

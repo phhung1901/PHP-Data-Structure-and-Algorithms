@@ -34,7 +34,7 @@ class Queue{
     // delete first val queue
     public function deQueue(){
             if ($this->isEmpty()){
-                echo "Queue is empty...\n";
+                throw  new  Exception("Queue is not empty\n");
             }else{
                 $val = $this->queue[++$this->first];
                 echo $val." is deQueue \n";
@@ -63,18 +63,21 @@ class Queue{
 }
 
 $queue = new Queue;
-if ($queue->isEmpty()){
-    echo "Queue is empty...\n";
-}else{
-    echo "Queue is not empty...\n";
+//if ($queue->isEmpty()){
+//    echo "Queue is empty...\n";
+//}else{
+//    echo "Queue is not empty...\n";
+//};
+//$queue->size();
+$queue->enQueue(20);
+try {
+    $queue->deQueue();
+    echo "Hehehe\n";
+}catch (Exception $e){
+    echo 'Message: ' .$e->getMessage();
 };
-$queue->size();
-$queue->enQueue(10);
-$queue->enQueue(15);
-$queue->enQueue(8);
-$queue->deQueue();
-$queue->front();
-$queue->after();
+//$queue->front();
+//$queue->after();
 $queue->enQueue(30);
 
 ?>
